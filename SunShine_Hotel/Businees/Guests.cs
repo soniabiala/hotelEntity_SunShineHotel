@@ -122,6 +122,33 @@ public	class Guests
 			}
 		}
 
+	public void GuestBookingInfo(int bookingID)
+	{
+		
+
+		using (var context = new SunShine_HotelEntities())
+		{
+				int roomID = 0;
+				DateTime bookingFrom = new DateTime(), BookingTo = new DateTime();
+				decimal roomCost=0;
+				{
+					var loadGuestBooking =
+					   context.Bookings.Where(b => b.BookingID == bookingID)
+						   .Select(b => new { b.BookingID, b.RoomIDFK, b.BookingFrom, b.BookingTo, b.RoomCost})
+						   .SingleOrDefault();
+					
+					roomID = loadGuestBooking.RoomIDFK;
+					bookingFrom = loadGuestBooking.BookingFrom.Value;
+					BookingTo = loadGuestBooking.BookingTo.Value;
+					roomCost = loadGuestBooking.RoomCost.Value;
+					//return bookingInfo.ToList();
+				}
+				
+				MessageBox.Show("Room :" + roomID+ " " + "is booked from " + bookingFrom + " - " + BookingTo 
+					+"\n" +" At the Cost of : $"+ roomCost+ " " + " For this Guest.");
+			}
+	}
+
 	public IEnumerable GuestsWithoutCheckIN()
 	{  //get all the guests data who need to check in
 			using (var context = new SunShine_HotelEntities())

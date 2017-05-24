@@ -187,6 +187,7 @@ namespace SunShine_Hotel
 			txtPhonecharges.Text = DGVGuests.Rows[e.RowIndex].Cells[12].Value.ToString();
 			txtRoomcharges.Text = DGVGuests.Rows[e.RowIndex].Cells[13].Value.ToString();
 			txtWiFiCharges.Text = DGVGuests.Rows[e.RowIndex].Cells[14].Value.ToString();
+			myGuests.GuestBookingInfo(bookingID);
 
 		}
 		
