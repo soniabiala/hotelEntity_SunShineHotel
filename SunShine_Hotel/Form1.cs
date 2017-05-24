@@ -469,6 +469,8 @@ namespace SunShine_Hotel
 		{
 			BookingDetailsDTO.roomID = Convert.ToInt32(DGVAvailableRooms.Rows[e.RowIndex].Cells[0].Value.ToString());
 			BookingDetailsDTO.roomCost = RemoveDollarSign(DGVAvailableRooms.Rows[e.RowIndex].Cells[3].Value.ToString());
+			MessageBox.Show("Room : " + BookingDetailsDTO.roomID + " " + "  is selected at the Booking cost of  : $"
+				+BookingDetailsDTO.roomCost);
 		}
 		private Decimal RemoveDollarSign(string moneytext)
 		{
